@@ -35,42 +35,39 @@
         .highlight { color: var(--accent); }
 
         /* --- TOP NAVIGATION (LOGO SLOT) --- */
+        /* --- POSIZIONAMENTO LOGO HTLfix --- */
         .navbar {
-            padding: 1cm 0 0 1cm; /* Distanza dal bordo sopra (1cm) e sinistra (1cm) */
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-            display: flex;
-            justify-content: flex-start; /* Allinea a sinistra */
+            /* Forza la distanza esatta dai bordi dello schermo */
+            top: 1cm; 
+            left: 1cm;
+            z-index: 999; /* Lo tiene sopra a tutto */
         }
 
-       .logo-slot {
-            display: block; /* Slot pulito per il logo */
+        .logo-slot {
+            display: block;
             width: 3cm;
             height: 3cm;
         }
-        
+
         .logo-img {
-            width: 3cm;  /* Larghezza 3cm */
-            height: 3cm; /* Altezza 3cm */
-            object-fit: contain; /* Evita che l'immagine si deformi */
+            width: 3cm;
+            height: 3cm;
+            object-fit: contain;
             display: block;
         }
-        
-       .logo-placeholder {
+
+        .logo-placeholder {
             width: 3cm;
             height: 3cm;
-            background: #222;
+            background: #1a1a1a;
             border: 1px solid #333;
-            border-radius: 8px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
-            color: #666;
-            font-weight: bold;
+            font-size: 0.7rem;
+            color: #555;
         }
 
         /* --- BRAND HERO CENTER --- */

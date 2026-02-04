@@ -36,39 +36,39 @@
 
         /* --- TOP NAVIGATION (LOGO SLOT) --- */
         .navbar {
-            padding: 20px 0;
+            padding: 1cm 0 0 1cm; /* Distanza dal bordo sopra (1cm) e sinistra (1cm) */
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 100;
-        }
-
-        .logo-slot {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
+            justify-content: flex-start; /* Allinea a sinistra */
         }
 
+       .logo-slot {
+            display: block; /* Slot pulito per il logo */
+            width: 3cm;
+            height: 3cm;
+        }
+        
         .logo-img {
-            height: 40px; 
-            width: auto;
+            width: 3cm;  /* Larghezza 3cm */
+            height: 3cm; /* Altezza 3cm */
+            object-fit: contain; /* Evita che l'immagine si deformi */
             display: block;
         }
         
-        .logo-placeholder {
-            height: 40px;
-            width: 40px;
+       .logo-placeholder {
+            width: 3cm;
+            height: 3cm;
             background: #222;
             border: 1px solid #333;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.6rem;
+            font-size: 0.8rem;
             color: #666;
             font-weight: bold;
         }

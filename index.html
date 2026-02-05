@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTLfix | Hotel Assistant</title>
+    <title>HTLfix | Hotel Operating System</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
+
     <style>
         /* --- RESET & VARIABLES --- */
         :root {
             --bg-color: #050505;
-            --card-bg: #111111;
+            --card-bg: #11111e;
             --text-main: #ffffff;
             --text-muted: #a1a1a1;
-            --accent: #00E599; /* Verde Tech vibrante */
-            --accent-glow: rgba(0, 229, 153, 0.2);
+            
+            /* COLORI: BLU ELETTRICO / VIOLA */
+            --accent: #224bff; 
+            --accent-secondary: #c243e0;
+            --gradient: linear-gradient(135deg, #224bff, #c243e0);
+            --accent-glow: rgba(34, 75, 255, 0.25);
+            
             --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
@@ -28,46 +36,31 @@
 
         /* --- TYPOGRAPHY --- */
         h1, h2, h3 { font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
-        h1 { font-size: 3.5rem; margin-bottom: 20px; background: linear-gradient(to right, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h1 { font-size: 3.5rem; margin-bottom: 20px; background: linear-gradient(to right, #fff, #b0b0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         h2 { font-size: 2.5rem; margin-bottom: 15px; }
         p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 20px; }
         
-        .highlight { color: var(--accent); }
+        .highlight { color: var(--accent-secondary); }
 
-        /* --- TOP NAVIGATION (LOGO SLOT) --- */
-        /* --- POSIZIONAMENTO LOGO HTLfix --- */
+        /* --- NAVBAR & LOGO --- */
         .navbar {
             position: absolute;
-            /* DESKTOP: Distanza fissa richiesta */
             top: 1cm; 
             left: 1cm;
-            z-index: 999; /* Lo tiene sopra a tutto */
+            z-index: 999;
         }
 
         .logo-slot {
             display: block;
             width: 3cm;
-            height: 3cm;
+            height: 3cm; 
         }
 
         .logo-img {
-            width: 3cm;
-            height: 3cm;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
             display: block;
-        }
-
-        .logo-placeholder {
-            width: 3cm;
-            height: 3cm;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            color: #555;
         }
 
         /* --- BRAND HERO CENTER --- */
@@ -76,7 +69,7 @@
             display: inline-block;
             border-bottom: 1px solid #222;
             padding-bottom: 20px;
-            padding-top: 60px; /* Spazio standard desktop */
+            padding-top: 60px;
             width: 100%;
         }
         
@@ -91,7 +84,7 @@
         }
 
         .brand-logo span {
-            color: var(--accent);
+            color: var(--accent); 
         }
 
         .brand-sub {
@@ -124,14 +117,29 @@
         }
         
         .btn-primary {
-            background-color: var(--accent);
-            color: #000;
+            background: var(--gradient); 
+            color: #fff;
             box-shadow: 0 0 20px var(--accent-glow);
+            border: none;
         }
         
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 0 30px var(--accent-glow);
+            filter: brightness(1.1);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid #333;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        .btn-ghost:hover {
+            border-color: #fff;
+            color: #fff;
         }
 
         /* --- HERO SECTION --- */
@@ -142,28 +150,61 @@
 
         .hero-badge {
             display: inline-block;
-            background: rgba(255,255,255,0.1);
+            background: rgba(34, 75, 255, 0.15);
             padding: 5px 15px;
             border-radius: 50px;
             font-size: 0.85rem;
             margin-bottom: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-            color: #fff;
+            border: 1px solid rgba(34, 75, 255, 0.3);
+            color: #b0b0ff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
         }
 
-        /* --- NEW LAYOUT: HERO SYMMETRY --- */
+        /* --- OFFER BOX (Stile principale) --- */
+        .offer-box {
+            background: linear-gradient(145deg, #151525 0%, #0a0a10 100%);
+            border: 1px solid var(--accent);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            max-width: 600px; /* Leggermente più stretto per l'Hero */
+            margin: 0 auto 50px; /* Margine sotto */
+            box-shadow: 0 0 50px rgba(34, 75, 255, 0.15);
+        }
+        
+        .badge-offer {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gradient);
+            color: #fff;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        .price { font-size: 3rem; font-weight: 800; color: #fff; margin: 15px 0; line-height: 1; }
+        .price span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
+        .price-sub { display: block; font-size: 1rem; color: var(--text-muted); margin-top: 5px; margin-bottom: 20px;}
+        .price-strike { text-decoration: line-through; color: #555; font-size: 1.5rem; margin-right: 10px; }
+
+        /* --- HERO LAYOUT (IMMAGINI) --- */
         .hero-layout {
-            margin-top: 60px;
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        /* MODIFICA: Dashboard più piccola (circa metà) */
         .hero-horizontal-slot {
             width: 100%;
-            max-width: 650px; /* Limita la larghezza a circa la metà del contenitore */
-            margin: 0 auto;   /* La centra perfettamente */
+            max-width: 650px;
+            margin: 0 auto;
             aspect-ratio: 16/9; 
             background: #1a1a1a;
             border-radius: 12px;
@@ -173,16 +214,15 @@
             position: relative;
         }
 
-        /* Riga Verticali Inferiore */
         .hero-vertical-row {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 Colonne uguali */
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
 
         .hero-vertical-slot {
             width: 100%;
-            aspect-ratio: 9/16; /* Formato Mobile */
+            aspect-ratio: 9/16;
             background: #1a1a1a;
             border-radius: 12px;
             border: 1px solid #333;
@@ -191,7 +231,6 @@
             position: relative;
         }
 
-        /* Effetti Immagine */
         img.mockup-img {
             width: 100%;
             height: 100%;
@@ -205,87 +244,39 @@
             transform: scale(1.02);
         }
 
-        .ph-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #444;
-            font-size: 0.8rem;
-            text-align: center;
-            width: 100%;
-            pointer-events: none;
-        }
-
         /* --- FEATURES --- */
         .feature-card {
             background: var(--card-bg);
             padding: 30px;
             border-radius: 12px;
             border: 1px solid #222;
-        }
-        .icon { font-size: 2rem; margin-bottom: 15px; display: block; }
-
-        /* --- PRICING / OFFER --- */
-        .offer-box {
-            background: linear-gradient(145deg, #111 0%, #0a0a0a 100%);
-            border: 1px solid var(--accent);
-            padding: 50px;
-            border-radius: 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            max-width: 800px;
-            margin: 0 auto;
+            transition: 0.2s;
         }
         
-        .badge-offer {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--accent);
-            color: #000;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
+        .feature-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
         }
+        
+        .icon { font-size: 2rem; margin-bottom: 15px; display: block; }
 
-        .price { font-size: 3.5rem; font-weight: 800; color: #fff; margin: 20px 0; }
-        .price span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
-        .price-strike { text-decoration: line-through; color: #555; font-size: 1.5rem; margin-right: 10px; }
-
-        /* --- MOBILE MEDIA QUERIES (FIX SOVRAPPOSIZIONE) --- */
+        /* --- MEDIA QUERIES --- */
         @media (max-width: 900px) {
             h1 { font-size: 2.5rem; }
             .brand-logo { font-size: 2.5rem; }
             .brand-sub { letter-spacing: 3px; font-size: 0.8rem; }
             .offer-box { padding: 30px 20px; }
             
-            /* Su mobile le 4 verticali diventano una griglia 2x2 */
             .hero-vertical-row {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
         }
 
-        /* --- FIX SPECIFICO PER LOGO SU SMARTPHONE --- */
         @media (max-width: 600px) {
-            /* 1. Riduciamo e spostiamo leggermente il logo su mobile per eleganza */
-            .navbar {
-                top: 15px;
-                left: 15px;
-            }
-            .logo-slot, .logo-img, .logo-placeholder {
-                width: 60px; /* Circa 1.5cm invece di 3cm */
-                height: 60px;
-            }
-
-            /* 2. Spingiamo giù il testo principale così non va sotto al logo */
-            .brand-container {
-                padding-top: 100px; /* Spazio extra di sicurezza */
-            }
+            .navbar { top: 15px; left: 15px; }
+            .logo-slot { width: 60px; height: 60px; }
+            .brand-container { padding-top: 100px; }
         }
     </style>
 </head>
@@ -293,8 +284,7 @@
 
     <nav class="navbar container">
         <a href="#" class="logo-slot">
-            <img src="logo.png" alt="HTLfix Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-            <div class="logo-placeholder" style="display:none;">LOGO</div>
+            <img src="logo.png" alt="HTLfix Logo" class="logo-img">
         </a>
     </nav>
 
@@ -302,10 +292,10 @@
         
         <div class="brand-container">
             <div class="brand-logo">HTL<span>fix</span></div>
-            <div class="brand-sub">Hotel Assistant</div>
+            <div class="brand-sub">Hotel Operating System</div>
         </div>
 
-        <div class="hero-badge">🚀 Beta in arrivo</div>
+        <div class="hero-badge">🚀 Founder's Club Aperto</div>
         
         <h1>Basta Carta. Basta Caos.<br>Solo <span class="highlight">Efficienza.</span></h1>
         <p style="max-width: 600px; margin: 0 auto 30px;">
@@ -313,37 +303,50 @@
             Pensato per gli hotel che vogliono smettere di perdere tempo e ticket.
         </p>
         
-        <a href="mailto:tuo-email@gmail.com?subject=Blocca%20Prezzo%20Founder%20HTLfix" class="btn btn-primary">
-            Blocca Prezzo Founder
-        </a>
-        
-        <p style="font-size: 0.9rem; margin-top: 15px; color: #fff; font-weight: 500;">
-            ⚠️ A breve la Beta sarà disponibile. <br><span style="color: var(--text-muted); font-weight: 400;">Prenotati ora per assicurarti il prezzo.</span>
-        </p>
+        <div class="offer-box">
+            <div class="badge-offer">Posti Limitati</div>
+            <h2>Entra nel Founder's Club</h2>
+            <p style="font-size: 0.95rem; margin-bottom: 15px;">
+                Ottieni accesso a vita e supporto prioritario diretto con lo sviluppatore.
+            </p>
+            
+            <div class="price">
+                <span class="price-strike">€79</span>
+                €29 <span>/ mese</span>
+            </div>
+            <div class="price-sub">Prezzo bloccato per sempre.</div>
+            
+            <p style="font-size: 0.85rem; margin-bottom: 25px; opacity: 0.8;">
+                Nessun costo nascosto. Setup incluso. Disdici quando vuoi.
+            </p>
+
+            <a href="https://app.htlfix.com" class="btn btn-primary" style="width: 100%;">
+                Blocca Prezzo Founder
+            </a>
+            
+            <p style="font-size: 0.75rem; margin-top: 12px; opacity: 0.6;">
+                L'offerta scade all'esaurimento dei founder slot.
+            </p>
+        </div>
 
         <div class="hero-layout">
             
             <div class="hero-horizontal-slot">
-               
-                <img src="screen_h.png" alt="Dashboard Desktop" class="mockup-img" onerror="this.style.display='none'">
+                <img src="screen_h.png" alt="Dashboard Desktop" class="mockup-img" onerror="this.style.opacity='0.1'">
             </div>
 
             <div class="hero-vertical-row">
                 <div class="hero-vertical-slot">
-                    
-                    <img src="screen_v1.png" alt="Mobile 1" class="mockup-img" onerror="this.style.display='none'">
+                    <img src="screen_v1.png" alt="Mobile 1" class="mockup-img" onerror="this.style.opacity='0.1'">
                 </div>
                 <div class="hero-vertical-slot">
-                   
-                    <img src="screen_v2.png" alt="Mobile 2" class="mockup-img" onerror="this.style.display='none'">
+                    <img src="screen_v2.png" alt="Mobile 2" class="mockup-img" onerror="this.style.opacity='0.1'">
                 </div>
                 <div class="hero-vertical-slot">
-                    
-                    <img src="screen_v3.png" alt="Mobile 3" class="mockup-img" onerror="this.style.display='none'">
+                    <img src="screen_v3.png" alt="Mobile 3" class="mockup-img" onerror="this.style.opacity='0.1'">
                 </div>
                 <div class="hero-vertical-slot">
-                   
-                    <img src="screen_v4.png" alt="Mobile 4" class="mockup-img" onerror="this.style.display='none'">
+                    <img src="screen_v4.png" alt="Mobile 4" class="mockup-img" onerror="this.style.opacity='0.1'">
                 </div>
             </div>
 
@@ -374,34 +377,14 @@
         </div>
     </section>
 
-    <section class="section container">
-        <div class="offer-box">
-            <div class="badge-offer">POSTI LIMITATI</div>
-            <h2>Entra nel Founder's Club</h2>
-            <p>Ottieni accesso a vita e supporto prioritario diretto con lo sviluppatore.</p>
-            
-            <div class="price">
-                <span class="price-strike">€79/mese</span>
-                €29<span style="font-size: 2rem">/mese</span>
-                <span>(Bloccato a vita)</span>
-            </div>
-            
-            <p style="font-size: 0.9rem; margin-bottom: 30px;">
-                Nessun costo nascosto. Setup incluso. Disdici quando vuoi.
-            </p>
-
-            <a href="mailto:tuo-email@gmail.com?subject=Blocca%20Prezzo%20Founder" class="btn btn-primary">
-                Blocca Prezzo Founder
-            </a>
-            
-            <p style="font-size: 0.8rem; margin-top: 15px;">
-                La Beta sarà disponibile a breve. <br>L'offerta scade all'esaurimento dei founder slot.
-            </p>
-        </div>
-    </section>
-
     <footer class="text-center" style="padding: 40px 0; color: #444; font-size: 0.8rem;">
-        <p>&copy; 2026 HTLfix. Costruito con ❤️ e codice.</p>
+        <p style="margin-bottom: 20px;">Hai domande prima di acquistare?</p>
+        
+        <a href="mailto:info@htlfix.com?subject=Richiesta%20Info%20Founder%20Club%20HTLfix" class="btn btn-ghost">
+            Contatta Manuel (Founder)
+        </a>
+        
+        <p style="margin-top: 40px;">&copy; 2026 HTLfix. Built by Manuel Puglisi.</p>
     </footer>
 
 </body>

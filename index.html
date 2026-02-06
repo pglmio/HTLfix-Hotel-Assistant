@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTLfix | Hotel Assistant</title>
+    <title>HTLfix | Sistema Operativo per Hotel</title>
     
     <link rel="icon" type="image/png" href="logo.png">
 
@@ -22,6 +22,7 @@
             --accent-glow: rgba(34, 75, 255, 0.25);
             
             --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --success: #00ff88; /* Verde Hacker per le spunte */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -171,9 +172,9 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            max-width: 600px; /* Leggermente più stretto per l'Hero */
-            margin: 0 auto 50px; /* Margine sotto */
-            box-shadow: 0 0 50px rgba(34, 75, 255, 0.15);
+            max-width: 500px; /* Più stretto per concentrare l'attenzione */
+            margin: 0 auto 50px; 
+            box-shadow: 0 0 60px rgba(34, 75, 255, 0.2);
         }
         
         .badge-offer {
@@ -189,10 +190,38 @@
             text-transform: uppercase;
         }
 
-        .price { font-size: 3rem; font-weight: 800; color: #fff; margin: 15px 0; line-height: 1; }
-        .price span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
-        .price-sub { display: block; font-size: 1rem; color: var(--text-muted); margin-top: 5px; margin-bottom: 20px;}
-        .price-strike { text-decoration: line-through; color: #555; font-size: 1.5rem; margin-right: 10px; }
+        .price { font-size: 3.5rem; font-weight: 800; color: #fff; margin: 15px 0 5px 0; line-height: 1; }
+        .price span { font-size: 1.2rem; color: var(--text-muted); font-weight: 400; }
+        .price-sub { display: block; font-size: 0.9rem; color: #00ff88; margin-bottom: 25px; font-weight: 500;} /* Prezzo bloccato verde */
+        .price-strike { text-decoration: line-through; color: #555; font-size: 1.5rem; margin-right: 10px; opacity: 0.7; }
+
+        /* --- LISTA FEATURE (NEW) --- */
+        .feature-list {
+            text-align: left;
+            margin: 0 auto 30px auto;
+            padding: 0;
+            list-style: none;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: #e0e0e0;
+            line-height: 1.3;
+        }
+
+        .feature-list li svg {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            fill: var(--success);
+            filter: drop-shadow(0 0 5px rgba(0, 255, 136, 0.4));
+        }
 
         /* --- HERO LAYOUT (IMMAGINI) --- */
         .hero-layout {
@@ -277,6 +306,8 @@
             .navbar { top: 15px; left: 15px; }
             .logo-slot { width: 60px; height: 60px; }
             .brand-container { padding-top: 100px; }
+            h1 { font-size: 2rem; }
+            .price { font-size: 2.8rem; }
         }
     </style>
 </head>
@@ -292,40 +323,71 @@
         
         <div class="brand-container">
             <div class="brand-logo">HTL<span>fix</span></div>
-            <div class="brand-sub">Hotel Assistant</div>
+            <div class="brand-sub">Gestione Operativa</div>
         </div>
 
-        <div class="hero-badge">🚀 Founder's Club Aperto</div>
+        <div class="hero-badge">🚀 Founder's Club: Accesso Prioritario</div>
         
-        <h1>Basta Carta. Basta Caos.<br>Solo <span class="highlight">Efficienza.</span></h1>
-        <p style="max-width: 600px; margin: 0 auto 30px;">
-            Il sistema operativo moderno per housekeeping e manutenzione. 
-            Pensato per gli hotel che vogliono smettere di perdere tempo.
+        <h1>Il Tuo Hotel.<br>Finalmente <span class="highlight">Sotto Controllo.</span></h1>
+        <p style="max-width: 650px; margin: 0 auto 30px;">
+            Elimina i foglietti volanti, coordina le pulizie in tempo reale e azzera i ticket di manutenzione persi. 
+            <span style="color: #fff; font-weight: 500;">La piattaforma All-In-One per l'hotel che non si ferma mai.</span>
         </p>
         
         <div class="offer-box">
             <div class="badge-offer">Posti Limitati</div>
-            <h2>Entra nel Founder's Club</h2>
-            <p style="font-size: 0.95rem; margin-bottom: 15px;">
-                Ottieni accesso a vita e supporto con lo sviluppatore.
+            <h2>Diventa Founder</h2>
+            <p style="font-size: 0.95rem; margin-bottom: 10px; color: #ccc;">
+                Smetti di pagare software complessi e inutili.
             </p>
             
             <div class="price">
                 <span class="price-strike">€79</span>
                 €29 <span>/ mese</span>
             </div>
-            <div class="price-sub">Prezzo bloccato per sempre.</div>
+            <div class="price-sub">⚡ Prezzo bloccato a vita</div>
             
-            <p style="font-size: 0.85rem; margin-bottom: 25px; opacity: 0.8;">
-                Nessun costo nascosto.
-            </p>
+            <ul class="feature-list">
+                <li>
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <strong>Creazione Profili & Stanze Illimitate</strong>
+                </li>
+                <li>
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <span>Ticket Manutenzione Gratuiti</span>
+                </li>
+                <li>
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <span>Dashboard <strong>Reception</strong> (Live Status)</span>
+                </li>
+                <li>
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <span>Dashboard <strong>Direttore/Admin</strong></span>
+                </li>
+                <li>
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <span>App <strong>Governante</strong> (Supervisione)</span>
+                </li>
+                <li>
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <span>App <strong>Housekeeping</strong> (Staff Pulizie)</span>
+                </li>
+                <li>
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <span>Dashboard <strong>Manutenzione</strong></span>
+                </li>
+                <li>
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <span>Invio & Ricezione Ticket LIVE</span>
+                </li>
+            </ul>
 
             <a href="https://app.htlfix.com" class="btn btn-primary" style="width: 100%;">
-                Blocca Prezzo Founder
+                Inizia Ora (Blocca l'Offerta)
             </a>
             
-            <p style="font-size: 0.75rem; margin-top: 12px; opacity: 0.6;">
-                L'offerta scade all'esaurimento dei founder slot.
+            <p style="font-size: 0.75rem; margin-top: 15px; opacity: 0.6;">
+                Nessuna carta di credito richiesta per la demo. Setup immediato.
             </p>
         </div>
 
@@ -337,16 +399,16 @@
 
             <div class="hero-vertical-row">
                 <div class="hero-vertical-slot">
-                    <img src="screen_v1.png" alt="Mobile 1" class="mockup-img" onerror="this.style.opacity='0.1'">
+                    <img src="screen_v1.png" alt="Mobile Reception" class="mockup-img" onerror="this.style.opacity='0.1'">
                 </div>
                 <div class="hero-vertical-slot">
-                    <img src="screen_v2.png" alt="Mobile 2" class="mockup-img" onerror="this.style.opacity='0.1'">
+                    <img src="screen_v2.png" alt="Mobile Housekeeping" class="mockup-img" onerror="this.style.opacity='0.1'">
                 </div>
                 <div class="hero-vertical-slot">
-                    <img src="screen_v3.png" alt="Mobile 3" class="mockup-img" onerror="this.style.opacity='0.1'">
+                    <img src="screen_v3.png" alt="Mobile Manutenzione" class="mockup-img" onerror="this.style.opacity='0.1'">
                 </div>
                 <div class="hero-vertical-slot">
-                    <img src="screen_v4.png" alt="Mobile 4" class="mockup-img" onerror="this.style.opacity='0.1'">
+                    <img src="screen_v4.png" alt="Mobile Admin" class="mockup-img" onerror="this.style.opacity='0.1'">
                 </div>
             </div>
 
@@ -356,35 +418,35 @@
 
     <section class="section container">
         <div class="text-center" style="margin-bottom: 50px;">
-            <h2>Tutto quello che serve. <br>Niente che distrae.</h2>
+            <h2>Organizzazione Svizzera.<br>Flessibilità Italiana.</h2>
         </div>
         <div class="grid grid-3">
             <div class="feature-card">
                 <span class="icon">🧹</span>
                 <h3>Housekeeping Smart</h3>
-                <p>Stato delle camere in tempo reale. Le governanti aggiornano lo status con un click. Zero walkie-talkie.</p>
+                <p>Basta urlare nei corridoi. La governante assegna le camere, le cameriere vedono la lista sul telefono. Camera pulita? Click. La reception lo sa subito.</p>
             </div>
             <div class="feature-card">
-                <span class="icon">🛠️</span>
-                <h3>Ticket Manutenzione</h3>
-                <p>Niente più post-it persi. Segnala un guasto, assegnalo al tecnico e ricevi notifica quando è risolto.</p>
+                <span class="icon">⚡</span>
+                <h3>Manutenzione Istantanea</h3>
+                <p>Lampadina rotta nella 102? La cameriera fa una foto e invia il ticket. Il manutentore riceve la notifica. Problema risolto prima che il cliente si lamenti.</p>
             </div>
             <div class="feature-card">
                 <span class="icon">📊</span>
-                <h3>Dashboard Totale</h3>
-                <p>Hai il controllo completo della struttura da un'unica schermata. Report, statistiche e flussi reali.</p>
+                <h3>Controllo Totale</h3>
+                <p>Sei il direttore? Vedi tutto. Chi sta pulendo cosa, quali guasti sono aperti e le performance dello staff. Tutto in una dashboard.</p>
             </div>
         </div>
     </section>
 
     <footer class="text-center" style="padding: 40px 0; color: #444; font-size: 0.8rem;">
-        <p style="margin-bottom: 20px;">Hai domande prima di acquistare?</p>
+        <p style="margin-bottom: 20px;">Non sei sicuro? Parliamone.</p>
         
         <a href="mailto:info@htlfix.com?subject=Richiesta%20Info%20Founder%20Club%20HTLfix" class="btn btn-ghost">
-            Contattami (Founder)
+            Scrivi al Founder (Manuel)
         </a>
         
-        <p style="margin-top: 40px;">&copy;2026 HTLfix. Costruito con ❤️ e codice.</p>
+        <p style="margin-top: 40px;">&copy;2026 HTLfix. Creato per chi lavora sodo.</p>
     </footer>
 
 </body>
